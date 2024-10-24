@@ -15,12 +15,13 @@ const authRoutes = require('./routes/authRoutes')
 
 // Conexão com o mongo db
 
-mongoose.connect('mongodb+srv://pguerra872:12345@library.rh7qd.mongodb.net/?retryWrites=true&w=majority&appName=library'
-   
-    ,{
-    useNewUrlParser:true,useUnifiedTopology:true
+mongoose.connect('mongodb+srv://pguerra872:12345@library.rh7qd.mongodb.net/?retryWrites=true&w=majority&appName=library', {
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
     
-}).then(()=>console.log('Mongodb conectado')).catch(err=>console.error('Erro ao conectar no mongo',err));
+})
+.then(()=>console.log('Mongodb conectado'))
+.catch(err=>console.error('Erro ao conectar no mongo',err));
 
 // Importação das rotas
 const bookRoutes = require('./Routes/books');
