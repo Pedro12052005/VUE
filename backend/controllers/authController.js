@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const routes = express.Router();
 const authController = require('../controllers/authController')
 
 // Rota para registrar novos usuarios
@@ -11,7 +11,7 @@ router.post('/register',authController.register)
 router.post('/login',authController.login);
 
 module.exports = router;
-*/
+//
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
@@ -23,7 +23,7 @@ router.post('/register', authController.register);
 router.post('/login', authController.login);
 
 module.exports = router;
-/*
+
 const User = require('../models/Book'); // Adjust the path as necessary
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -72,4 +72,3 @@ exports.login = async (req, res) => {
         res.status(500).json({ error: 'Erro ao fazer login' });
     }
 };
-*/
