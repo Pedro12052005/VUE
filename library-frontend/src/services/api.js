@@ -13,4 +13,14 @@ export default {
 getBooks() {
 return apiClient.get('/'); // GET para listar livros
 },
-}
+
+addBook(book) {
+    return apiClient.post('/', book); // POST para postar livros
+}, 
+updateBook(id, book) {
+    return apiClient.put(`/${id}`, book); // PUT para atualizar os dados dos livros
+},
+deleteBook(id) {
+    return apiClient.delete(`/${id}`); // DELETE para excluir livro pelo ID
+},
+};
