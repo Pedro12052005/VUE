@@ -15,7 +15,7 @@ const authRoutes = require('./routes/authRoutes')
 
 // Conexão com o mongo db
 
-mongoose.connect('mongodb+srv://pguerra872:12345@library.rh7qd.mongodb.net/?retryWrites=true&w=majority&appName=library', {
+mongoose.connect('mongodb+srv://pguerra872:12052005@library.rh7qd.mongodb.net/?retryWrites=true&w=majority&appName=library', {
     useNewUrlParser:true,
     useUnifiedTopology:true,
     
