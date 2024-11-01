@@ -1,18 +1,54 @@
 const express = require('express'); // Importamos o Express
 const Book = require('../models/Book'); // Importamos o modelo Book
-const router = express.Router(); // Criamos o roteador 
+const router = express.Router(); // Criamos o roteador
+const multer = require('multer');
 
-// *** CRIAÇÃO (POST) ***
-router.post('/', async (req, res) => {
-    const { title, author, year } = req.body; // Extraímos os dados da requisição
-    try {
-        const newBook = new Book({ title, author, year }); // Criamos e salvamos o livro
-        await newBook.save();
-        res.status(201).json(newBook); // Retornamos o livro criado
-    } catch (error) {
-        res.status(500).json({ message: 'Erro ao criar livro', error }); // Retornamos o erro
+
+// configuração do caminho para upload das imagens
+const storage = multer.diskStorage({
+    destination: function(req,file,cb){
+        cb(null,'upload/');
+    },
+    filename:function(req,file,cb){
+        cb(null,Date.now() + '-' + file.originalname);
     }
 });
+
+const upload = multer({storage: storage,
+    });
+//const upload = multer({ dest: 'uploads/' }).single('file');
+//const upload = multer({ dest: 'uploads/' }).fields([{ name: 'image', maxCount: 1 }]);
+
+router.post('/',upload.single('image'),async(req,res)=>{
+    try{
+        const {title, author, year,} = req.body;
+        const image = req.file.path;
+        const newBook = new Book({
+            title,
+            author,
+            year,
+            image
+        });
+        await newBook.save();
+        console.log(req.body); // Check the body fields
+        console.log(req.files); // Check the uploaded files
+        res.status(201).json({message: 'Jogo cadastrado com sucesso',});
+        }catch(error){
+      res.status(500).json({message: 'Erro ao cadastrar o jogo',error})
+    }
+});
+
+// *** CRIAÇÃO (POST) ***
+// router.post('/', async (req, res) => {
+//     const { title, author, year } = req.body; // Extraímos os dados da requisição
+//     try {
+//         const newBook = new Book({ title, author, year }); // Criamos e salvamos o livro
+//         await newBook.save();
+//         res.status(201).json(newBook); // Retornamos o livro criado
+//     } catch (error) {
+//         res.status(500).json({ message: 'Erro ao criar livro', error }); // Retornamos o erro
+//     }
+// });
 
 // *** LEITURA (GET) ***
 router.get('/', async (req, res) => {

@@ -27,6 +27,7 @@ mongoose.connect('mongodb+srv://pguerra872:12345@library.rh7qd.mongodb.net/?retr
 const bookRoutes = require('./Routes/books');
 app.use('/api/books',bookRoutes); // irá retornar a rota dos livros
 app.use('/api/auth',authRoutes);
+app.use('/upload', express.static('upload'))
 // Define a porta do servidor
 app.listen(5000,()=>{
     console.log('Servidor executando na porta 5000');
