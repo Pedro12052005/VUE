@@ -1,26 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your App.vue App"/>
+  <div id="app">
+    <CriarPage></CriarPage>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+
+import CriarPage from './components/CriarPage.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    CriarPage,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Seu estilo aqui */
 </style>

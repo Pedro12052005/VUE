@@ -32,9 +32,11 @@ router.post('/',upload.single('image'),async(req,res)=>{
         await newBook.save();
         console.log(req.body); // Check the body fields
         console.log(req.files); // Check the uploaded files
-        res.status(201).json({message: 'Jogo cadastrado com sucesso',});
+        res.status(201).json({message: 'Livro cadastrado com sucesso',});
         }catch(error){
-      res.status(500).json({message: 'Erro ao cadastrar o jogo',error})
+            console.log(error);
+            
+      res.status(500).json({message: 'Erro ao cadastrar o livro',error})
     }
 });
 
