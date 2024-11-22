@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 // Definindo o esquema do livro
 const BookSchema = new mongoose.Schema({
-    title: { type: String, required: true},
-    author: { type: String, required: true},
-    year: { type: Number, required: true }, 
-    image: { type: String}  
+    title: { type: String, required: false},
+    author: { type: String, required: false},
+    year: { type: Number, required: false }, 
+    image: { type: String, required: false}  
 });
 
 // Exportando o modelo

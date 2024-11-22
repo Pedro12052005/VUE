@@ -5,10 +5,14 @@ const jwt = require('jsonwebtoken');
 // Função para registrar novos usuários
 exports.register = async (req, res) => {
     const { username, password } = req.body;
+    
+    
     try {
         // Verifica se o usuário já existe
         const existingUser = await User.findOne({ username });
         if (existingUser) {
+            // console.log(existingUser);
+            
             return res.status(400).json({ error: 'Usuário já existe' });
         }
 
